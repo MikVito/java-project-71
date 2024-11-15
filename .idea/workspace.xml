@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="394f70ae-3467-4b5f-a196-422db124053f" name="Changes" comment="init App class and gradle with jdk 21, added .gitignore">
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+    <list default="true" id="394f70ae-3467-4b5f-a196-422db124053f" name="Changes" comment="rebuild App picocli class to options that take an option parameter with one or more names">
+      <change afterPath="$PROJECT_DIR$/cd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hexlet/code/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hexlet/code/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,11 +38,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="App" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="App" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -83,6 +78,7 @@
     &quot;Gradle.App [clean].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.App [installDist].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.app [:App.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.app [assembleDist].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.app [build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.app [clean].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.app [installDist].executor&quot;: &quot;Run&quot;,
@@ -104,10 +100,10 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.app [installDist]">
-    <configuration name="App [installDist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="app [assembleDist]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/App" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -115,7 +111,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="installDist" />
+            <option value="assembleDist" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -204,7 +200,7 @@
         <item itemvalue="Gradle.app [build]" />
         <item itemvalue="Gradle.app [clean]" />
         <item itemvalue="Makefile Target.run-dist" />
-        <item itemvalue="Gradle.App [installDist]" />
+        <item itemvalue="Gradle.app [assembleDist]" />
       </list>
     </recent_temporary>
   </component>
@@ -249,13 +245,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731605737196</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="was added picocli implementation, fixed Makefile run-dist command, rebuild App class into picocli demo class">
+      <option name="closed" value="true" />
+      <created>1731670673773</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731670673773</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init .gitignore" />
     <MESSAGE value="init" />
     <MESSAGE value="init App class and gradle with jdk 21, added .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="init App class and gradle with jdk 21, added .gitignore" />
+    <MESSAGE value="was added picocli implementation, fixed Makefile run-dist command, rebuild App class into picocli demo class" />
+    <MESSAGE value="rebuild App picocli class to options that take an option parameter with one or more names" />
+    <option name="LAST_COMMIT_MESSAGE" value="rebuild App picocli class to options that take an option parameter with one or more names" />
   </component>
 </project>

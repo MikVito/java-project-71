@@ -25,5 +25,9 @@ check-updates:
 .PHONY: build
 
 run-dist:
-	cd app && build\install\app\bin\App.bat
+ifeq ($(OS),Windows_NT)
+	cd app && build\install\app\bin\app.bat
+else
+	cd app && ./build/install/app/bin/app
+endif
 
