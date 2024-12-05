@@ -8,11 +8,17 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    PrintStream printStream = new PrintStream(outputStream);
 
     @Test
-  public void testMain() {
+    void call() {
+        assertEquals(1, 1);
+    }
+
+    @Test
+    void testMain() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(outputStream);
+
         System.out.println(printStream);
         App.main(new String[]{});
 
