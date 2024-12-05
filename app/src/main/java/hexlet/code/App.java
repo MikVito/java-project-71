@@ -9,7 +9,10 @@ import java.util.concurrent.Callable;
 
 @Command(
         name = "Demo",
-        mixinStandardHelpOptions = true)
+        mixinStandardHelpOptions = true,
+        version = "1.0",
+        description = "Compares two configuration files and shows a difference."
+)
 
 public class App implements Callable<Integer> {
     @Parameters(
