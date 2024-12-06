@@ -21,10 +21,8 @@ class DifferTest {
 
     @BeforeAll
     public static void initialSetup() throws Exception {
-        jsonFilePath1 = fileRead(
-                "/home/mikhail/IdeaProjects/java-project-71/app/src/test/resources/testJson1.json");
-        jsonFilePath2 = fileRead(
-                "/home/mikhail/IdeaProjects/java-project-71/app/src/test/resources/testJson2.json");
+        jsonFilePath1 = fileRead("/src/test/resources/testJson1.json");
+        jsonFilePath2 = fileRead("/src/test/resources/testJson2.json");
         format = "stylish";
     }
 
