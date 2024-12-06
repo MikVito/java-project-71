@@ -1,36 +1,36 @@
 package hexlet.code;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+class DifferTest {
+    private static String jsonFilePath1;
+    private static String jsonFilePath2;
+    private static String format;
 
-class AppTest {
+    public static String fileRead(String filePath) throws Exception {
+        Path path = Paths.get(filePath).toAbsolutePath().normalize();
+        return Files.readString(path);
+    }
 
-    @Test
-    void callTest() {
-        var filepath1 = "file1.json";
-        var filepath2 = "file2.json";
-        var formatFile = "stylish";
-        var expected = List.of(filepath1, filepath2, formatFile);
-        assertEquals(expected, new ArrayList<>(List.of(filepath1, filepath2, formatFile)));
+    @BeforeAll
+    public static void initialSetup() throws Exception {
+        jsonFilePath1 = fileRead("src/test/resources/testJson1.json");
+        jsonFilePath2 = fileRead("src/test/resources/testJson2.json");
+        format = "json";
     }
 
     @Test
-    void testMain() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(outputStream);
-
-        System.out.println(printStream);
-        App.main(new String[]{});
-
-        assertEquals("Hello, World!\n", outputStream.toString());
-
-        System.out.println(System.out);
+    public void defaultFormatterTest() throws Exception {
+        String expectResult = "{...}";
+        String resultJson = Differ.generate(jsonFilePath1, jsonFilePath2, format);
+        Assertions.assertEquals(expectResult, resultJson);
     }
 }
+
