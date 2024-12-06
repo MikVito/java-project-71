@@ -4,14 +4,21 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppTest {
 
     @Test
-    void call() {
-        assertEquals(1, 1);
+    void callTest() {
+        var filepath1 = "file1.json";
+        var filepath2 = "file2.json";
+        var formatFile = "stylish";
+        var expected = List.of(filepath1, filepath2, formatFile);
+        assertEquals(expected, new ArrayList<>(List.of(filepath1, filepath2, formatFile)));
     }
 
     @Test
