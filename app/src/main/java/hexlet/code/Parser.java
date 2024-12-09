@@ -4,14 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.HashMap;
 
 public class Parser {
-    public static HashMap<String, Object> getFileData(String data, String format) throws Exception {
+    public static HashMap<String, Object> getFileData(String data) throws Exception {
         HashMap<String, Object> resultMap = new HashMap<>();
 
-        if (format.equals("json")) {
+        if (data.equals("json")) {
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.readValue(data, new TypeReference<>() {
             });
-        } else if (format.equals("yaml") || format.equals("yml")) {
+        } else if (data.equals("yaml") || data.equals("yml")) {
             ObjectMapper yamlMapper = new ObjectMapper();
             return yamlMapper.readValue(data, new TypeReference<>() {
             });

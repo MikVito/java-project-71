@@ -16,6 +16,7 @@ application {
 }
 
 dependencies {
+    testImplementation ("org.skyscreamer:jsonassert:1.5.0")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("info.picocli:picocli:4.7.6")
