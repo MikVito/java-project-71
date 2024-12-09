@@ -34,6 +34,7 @@ public class Stylish {
                 }
 
                 case "deleted" -> resultString.append("  - ")
+                        .append(key)
                         .append(": ")
                         .append(value1)
                         .append("\n");
@@ -43,6 +44,7 @@ public class Stylish {
                         .append(": ")
                         .append(value2)
                         .append("\n");
+
                 default -> throw new IllegalArgumentException("Error: " + status);
             }
         });
