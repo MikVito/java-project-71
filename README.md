@@ -9,13 +9,13 @@
 
 # DIFFERENCE CALCULATOR
 
-This project implements a console application designed to compare two provided files in either YAML, YML, or JSON format. 
+This project implements a console application designed to compare three provided files in either YAML, YML, or JSON format. 
 It identifies the differences between the files and generates a new file displaying the detected discrepancies. 
 The output can be customized into one of three available formats:
 
-    Stylish format
-    Plain text format
-    JSON format (default)
+ - Stylish format
+ - Plain text format
+ - JSON format (default)
 
 The application allows users to easily compare configuration files, detect changes, and choose the most suitable format 
 for displaying the differences.
