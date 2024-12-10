@@ -8,12 +8,9 @@ import java.util.HashMap;
 
 
 public class Differ {
-    static String file1;
-    static String file2;
-
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
-        file1 = fileReader(filepath1);
-        file2 = fileReader(filepath2);
+        String file1 = fileReader(filepath1);
+        String file2 = fileReader(filepath2);
 
         HashMap<String, Object> getFileFormat1 = Parser.getFileData(file1);
         HashMap<String, Object> getFileFormat2 = Parser.getFileData(file2);

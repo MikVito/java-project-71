@@ -39,7 +39,7 @@ public class Plain {
                 default -> throw new IllegalArgumentException("Unclown status: " + status);
             }
         });
-       return resultString.toString().trim();
+        return resultString.toString().trim();
     }
 
     public static Object stringify(Object value) {
