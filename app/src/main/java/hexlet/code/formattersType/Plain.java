@@ -36,7 +36,7 @@ public class Plain {
                         .append(stringify(value2))
                         .append("\n");
 
-                default -> throw new IllegalArgumentException("Unclown status: " + status);
+                default -> throw new IllegalArgumentException("Unknown status: " + status);
             }
         });
         return resultString.toString().trim();
