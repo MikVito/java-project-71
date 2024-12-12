@@ -9,7 +9,7 @@ import java.util.Map;
 
 
 public class Format {
-    public static String formatDifference(List<Map<String, Object>> inputList, String format) {
+    public static String formatDifference(List<Map<String, Object>> inputList, String format) throws Exception {
         return switch (format) {
             case "stylish" -> Stylish.formatStylish(inputList);
             case "json" -> Json.formatJson(inputList);
