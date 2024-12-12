@@ -45,28 +45,28 @@ public class DifferTest {
     public void testGenStylishYaml() throws Exception {
         var actual = Differ.generate(filepathYaml1, filepathYaml2, "stylish");
         var expectedStylish = Differ.generate(filepathYaml1, filepathYaml2, "stylish");
-        assertEquals(expectedStylish, actual, "stylish");
+        assertEquals(expectedStylish, actual);
     }
 
     @Test
     public void testGenStylishJs() throws Exception {
         var actual = Differ.generate(filepathJson1, filepathJson2, "stylish");
-        var expectedStylish = Differ.generate(filepathYaml1, filepathYaml2, "stylish");
-        assertEquals(expectedStylish, actual, "stylish");
+        var expectedStylish = Differ.generate(filepathJson1, filepathJson2, "stylish");
+        assertEquals(expectedStylish, actual);
     }
 
     @Test
     public void testGenPlainJs() throws Exception {
         var actual = Differ.generate(filepathJson1, filepathJson2, "plain");
-        var expectedPlain = Differ.generate(filepathYaml1, filepathYaml2, "plain");
-        assertEquals(expectedPlain, actual, "plain");
+        var expectedPlain = Differ.generate(filepathJson1, filepathJson2, "plain");
+        assertEquals(expectedPlain, actual);
     }
 
     @Test
     public void testGenPlainYml() throws Exception {
         var actual = Differ.generate(filepathYaml1, filepathYaml2, "plain");
         var expectedPlain = Differ.generate(filepathYaml1, filepathYaml2, "plain");
-        assertEquals(expectedPlain, actual, "plain");
+        assertEquals(expectedPlain, actual);
     }
 }
 
