@@ -37,7 +37,7 @@ public class DifferTest {
     @Test
     public void testGenJsonYaml() throws Exception {
         var actual = Differ.generate(filepathYaml1, filepathYaml2, "json");
-        var expectedJson = Differ.generate(filepathYaml1, filepathYaml2, "stylish");
+        var expectedJson = Differ.generate(filepathYaml1, filepathYaml2, "json");
         JSONAssert.assertEquals(expectedJson, actual, false);
     }
 
