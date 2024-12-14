@@ -4,6 +4,8 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -15,57 +17,64 @@ public class DifferTest {
     private static String filepathYaml1;
     private static String filepathYaml2;
 
-    public static String getPath(String path) {
-        Path pathFile = Paths.get(path);
+    private static String expectedJson;
+    private static String expectedStylish;
+    private static String expectedPlain;
+
+    public static String getPath(String file) {
+        Path pathFile = Paths.get(file);
         return pathFile.toAbsolutePath().toString();
     }
 
     public static String generatePath(String absolutePath, String pathFile) {
-        return absolutePath + pathFile;
+        return Paths.get(absolutePath, pathFile).toString();
+    }
+
+    public static String fileReader(String path, String file) throws IOException {
+        return Files.readString(Paths.get(generatePath(path, file)));
     }
 
     @BeforeAll
-    public static void beforeAll() {
+    public static void beforeAll() throws IOException {
         String path = getPath("src/test/resources");
 
         filepathJson1 = generatePath(path, "/testFile1.json");
         filepathJson2 = generatePath(path, "/testFile2.json");
         filepathYaml1 = generatePath(path, "/testFile1.yml");
         filepathYaml2 = generatePath(path, "/testFile2.yml");
+
+        expectedJson = fileReader(path, "/expectedJson.json");
+        expectedStylish = fileReader(path, "/expectedStylish.text");
+        expectedPlain = fileReader(path, "/expectedPlain.text");
     }
 
     @Test
     public void testGenJsonYaml() throws Exception {
         var actual = Differ.generate(filepathYaml1, filepathYaml2, "json");
-        var expectedJson = Differ.generate(filepathYaml1, filepathYaml2, "json");
         JSONAssert.assertEquals(expectedJson, actual, false);
     }
 
     @Test
     public void testGenStylishYaml() throws Exception {
         var actual = Differ.generate(filepathYaml1, filepathYaml2, "stylish");
-        var expectedStylish = Differ.generate(filepathYaml1, filepathYaml2, "stylish");
         assertEquals(expectedStylish, actual);
     }
 
     @Test
     public void testGenStylishJs() throws Exception {
         var actual = Differ.generate(filepathJson1, filepathJson2, "stylish");
-        var expectedStylish = Differ.generate(filepathJson1, filepathJson2, "stylish");
         assertEquals(expectedStylish, actual);
     }
 
     @Test
     public void testGenPlainJs() throws Exception {
         var actual = Differ.generate(filepathJson1, filepathJson2, "plain");
-        var expectedPlain = Differ.generate(filepathJson1, filepathJson2, "plain");
         assertEquals(expectedPlain, actual);
     }
 
     @Test
     public void testGenPlainYml() throws Exception {
         var actual = Differ.generate(filepathYaml1, filepathYaml2, "plain");
-        var expectedPlain = Differ.generate(filepathYaml1, filepathYaml2, "plain");
         assertEquals(expectedPlain, actual);
     }
 }
