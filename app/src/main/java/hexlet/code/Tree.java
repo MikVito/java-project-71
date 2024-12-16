@@ -21,21 +21,25 @@ public class Tree {
             var checkList = new HashMap<String, Object>();
             checkList.put("key", key);
 
+            Object value1 = inputFile1.get(key);
+            Object value2 = inputFile2.get(key);
+
             if (inputFile1.containsKey(key) && inputFile2.containsKey(key)) {
-                if (inputFile1.get(key).equals(inputFile2.get(key))) {
+
+                if (value1 == null || value2 == null) {
                     checkList.put("status", "not changed");
-                    checkList.put("value1", inputFile1.get(key));
+                    checkList.put("value1", value1);
                 } else {
                     checkList.put("status", "changed");
-                    checkList.put("value1", inputFile1.get(key));
-                    checkList.put("value2", inputFile2.get(key));
+                    checkList.put("value1", value1);
+                    checkList.put("value2", value2);
                 }
             } else if (inputFile1.containsKey(key)) {
                 checkList.put("status", "deleted");
-                checkList.put("value1", inputFile1.get(key));
-            } else {
+                checkList.put("value1", value1);
+            } else if (inputFile2.containsKey(key)) {
                 checkList.put("status", "added");
-                checkList.put("value2", inputFile2.get(key));
+                checkList.put("value2", value2);
             }
             result.add(checkList);
         });
