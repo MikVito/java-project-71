@@ -26,8 +26,8 @@ public class DifferTest {
         return pathFile.toAbsolutePath().toString();
     }
 
-    public static String generatePath(String absolutePath, String pathFile) {
-        return Paths.get(absolutePath, pathFile).toString();
+    public static String generatePath(String pathFile1, String pathFile2) {
+        return Paths.get(pathFile1, pathFile2).toString();
     }
 
     public static String fileReader(String path, String file) throws IOException {
