@@ -26,9 +26,9 @@ public class Tree {
 
             if (inputFile1.containsKey(key) && inputFile2.containsKey(key)) {
 
-                if (value1 == null || value2 == null) {
+                if (value1 == null && value2 == null) {
                     checkList.put("status", "not changed");
-                    checkList.put("value1", value1);
+                    checkList.put("value1", inputFile1.get("key"));
                 } else {
                     checkList.put("status", "changed");
                     checkList.put("value1", value1);
