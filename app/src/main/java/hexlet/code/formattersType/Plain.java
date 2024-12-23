@@ -14,10 +14,12 @@ public class Plain {
             var value2 = diff.get("value2");
 
             switch (status) {
-                case "not change" -> {
+                case "not changed" ->resultString.append("Property '")
+                        .append("key")
+                        .append("'was not changed")
+                        .append("\n");
 
-                }
-                case "changed" -> resultString.append("Property'")
+                case "changed" -> resultString.append("Property '")
                         .append(key)
                         .append("' was updated. From ")
                         .append(stringify(value1))
@@ -25,12 +27,12 @@ public class Plain {
                         .append(stringify(value2))
                         .append("\n");
 
-                case "deleted" -> resultString.append("Property'")
+                case "deleted" -> resultString.append("Property '")
                         .append(key)
                         .append("' was removed")
                         .append("\n");
 
-                case "added" -> resultString.append("Property'")
+                case "added" -> resultString.append("Property '")
                         .append(key)
                         .append("'was added with value: ")
                         .append(stringify(value2))
