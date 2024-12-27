@@ -8,7 +8,7 @@ import picocli.CommandLine.Command;
 import java.util.concurrent.Callable;
 
 @Command(
-        name = "Demo",
+        name = "MikVito",
         mixinStandardHelpOptions = true,
         version = "1.0",
         description = "Compares two configuration files and shows a difference."
@@ -38,9 +38,14 @@ public class App implements Callable<Integer> {
     String format;
 
     @Override
-    public Integer call() throws Exception {
-        System.out.println(Differ.generate(filepath1, filepath2));
-        return 0;
+    public Integer call() {
+        try {
+            System.out.println(Differ.generate(filepath1, filepath2, format));
+            return 1;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        return 1;
     }
 
     public static void main(String[] args) {
