@@ -3,7 +3,7 @@ package hexlet.code.formattersType;
 import java.util.List;
 import java.util.Map;
 
-public class Plain {
+public class PlainFormatter {
     public static String formatPlain(List<Map<String, Object>> inputList) {
         StringBuilder resultString = new StringBuilder();
 
@@ -14,7 +14,7 @@ public class Plain {
             var value2 = diff.get("value2");
 
             switch (status) {
-                case "not changed" ->resultString.append("Property '")
+                case "not changed" -> resultString.append("Property '")
                         .append("key")
                         .append("'was not changed")
                         .append("\n");

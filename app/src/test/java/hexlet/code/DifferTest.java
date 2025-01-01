@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import org.skyscreamer.jsonassert.JSONAssert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -50,8 +49,8 @@ public class DifferTest {
 
     @Test
     public void testGenJsonYaml() throws Exception {
-        var actual = Differ.generate(filepathYaml1, filepathYaml2, "json");
-        JSONAssert.assertEquals(expectedJson, actual, false);
+        var actual = Differ.generate(filepathJson1, filepathJson2, "json");
+        assertEquals(expectedJson, actual);
     }
 
     @Test
