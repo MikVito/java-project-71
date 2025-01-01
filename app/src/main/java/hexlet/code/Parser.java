@@ -5,26 +5,28 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class Parser {
-    public static HashMap<String, Object> getFileParse(String data, String type) throws Exception {
-        HashMap<String, Object> resultMap = new HashMap<>();
-
+    public static Map<String, Object> parse(String data, String type) throws JsonProcessingException {
         if (type.equals("json")) {
-            resultMap = parseJson(data);
+            return parseJson(data);
         } else if (type.equals("yaml") || type.equals("yml")) {
-            resultMap = parseYaml(data);
+            return parseYaml(data);
+        } else {
+            throw new IllegalArgumentException("Unsupported file format: " + type);
         }
-        return resultMap;
-    }
-    public static HashMap<String, Object> parseJson(String data) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(data, new TypeReference<>() { });
     }
 
-    public static HashMap<String, Object> parseYaml(String data) throws JsonProcessingException {
+    public static Map<String, Object> parseJson(String data) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(data, new TypeReference<>() {
+        });
+    }
+
+    public static Map<String, Object> parseYaml(String data) throws JsonProcessingException {
         YAMLMapper yamlMapper = new YAMLMapper();
-        return yamlMapper.readValue(data, new TypeReference<>() { });
+        return yamlMapper.readValue(data, new TypeReference<>() {
+        });
     }
 }

@@ -40,12 +40,13 @@ public class App implements Callable<Integer> {
     @Override
     public Integer call() {
         try {
-            System.out.println(Differ.generate(filepath1, filepath2, format));
-            return 1;
+            String generate = Differ.generate(filepath1, filepath2);
+            System.out.println(generate);
+            return 0;
         } catch (Exception e) {
             System.out.println("Error: " + e);
+            return 1;
         }
-        return 1;
     }
 
     public static void main(String[] args) {
