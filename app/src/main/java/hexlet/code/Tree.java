@@ -1,6 +1,11 @@
 package hexlet.code;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 
 public class Tree {
     public static List<Map<String, Object>> getDifferenceTree(Map<String, Object> inputFile1,
@@ -23,16 +28,16 @@ public class Tree {
             boolean existsInFile1 = inputFile1.containsKey(key);
             boolean existsInFile2 = inputFile2.containsKey(key);
 
-            if (!isEqual(value1, value2)) {
-                changeEntry.put("status", "changed");
-                changeEntry.put("value1", value1);
-                changeEntry.put("value2", value2);
-            } else if (existsInFile1 && !existsInFile2) {
+            if (existsInFile1 && !existsInFile2) {
                 changeEntry.put("status", "removed");
-                changeEntry.put("value", value2);
+                changeEntry.put("value", value1);
             } else if (!existsInFile1 && existsInFile2) {
                 changeEntry.put("status", "added");
                 changeEntry.put("value", value2);
+            } else if (!isEqual(value1, value2)) {
+                changeEntry.put("status", "changed");
+                changeEntry.put("value1", value1);
+                changeEntry.put("value2", value2);
             } else {
                 changeEntry.put("status", "unchanged");
                 changeEntry.put("value", value1);
