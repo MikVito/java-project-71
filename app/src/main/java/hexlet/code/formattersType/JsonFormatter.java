@@ -39,6 +39,8 @@ public class JsonFormatter {
                 }
                 case "added" -> values.put("value2", item.get("value"));
                 case "removed" -> values.put("value1", item.get("value"));
+
+                default -> throw new IllegalArgumentException("Unknown status " + status);
             }
 
             resultMap.put(key, values);
