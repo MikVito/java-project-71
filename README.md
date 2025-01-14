@@ -7,19 +7,63 @@
 ### Test Coverage Badge
 [![Test Coverage](https://api.codeclimate.com/v1/badges/43bd129f21f7d51adf83/test_coverage)](https://codeclimate.com/github/MikVito/java-project-71/test_coverage)
 
-# DIFFERENCE CALCULATOR
+# 📂 DIFFERENCE CALCULATOR
 
-This project implements a console application designed to compare three provided files in either YAML, YML, or JSON format. 
-It identifies the differences between the files and generates a new file displaying the detected discrepancies. 
-The output can be customized into one of three available formats:
+A console application for comparing three files in YAML, YML, or JSON format.
+It detects the differences between files and generates an output highlighting those discrepancies.
 
- - Stylish format
- - Plain text format
- - JSON format (default)
+### 📝 Features
 
-The application allows users to easily compare configuration files, detect changes, and choose the most suitable format 
-for displaying the differences.
+✔️ Supports JSON, YAML, and YML file formats
+✔️ Detects changes between files and presents them in a structured format
+✔️ Three output formats available:
 
- - View help information for program arguments and options
+ - 📌 Stylish (default) – structured tree format
+ - 📌 Plain – simple text format
+ - 📌 JSON – formatted JSON output
 
-   [![asciicast](https://asciinema.org/a/698202.svg)](https://asciinema.org/a/698202) 
+🔧 Example Commands
+
+Compare two JSON files using stylish format:
+```sh
+./build/install/app/bin/app src/main/resources/file1.json src/main/resources/file2.json
+```
+
+Compare two YML files using plain format:
+```sh
+./build/install/app/bin/app src/main/resources/file1.yml src/main/resources/file2.yml -f plain
+```
+
+Compare two files and output JSON:
+```sh
+./build/install/app/bin/app src/main/resources/file1.json src/main/resources/file2.json -f json
+```
+
+## 🎥 Demo: Program in Action
+
+Click on a recording to view the functionality in action.
+
+**📌 Displaying Help Information**
+
+[![asciicast](https://asciinema.org/a/698202.svg)](https://asciinema.org/a/698202) 
+
+**📌 Comparing Two JSON Files (Stylish Format)**  
+
+[![asciicast](https://asciinema.org/a/698260.svg)](https://asciinema.org/a/698260)
+
+**📌 Comparing Two JSON Files (Plain Format)** 
+
+[![asciicast](https://asciinema.org/a/698261.svg)](https://asciinema.org/a/698261)
+
+**📌 Comparing Two JSON Files (Plain Format)** 
+
+[![asciicast](https://asciinema.org/a/698278.svg)](https://asciinema.org/a/698278)
+
+**📌 Comparing Two YML Files (Plain Format)** 
+
+[![asciicast](https://asciinema.org/a/698280.svg)](https://asciinema.org/a/698280)
+
+### 📌 Requirements
+ - Java 17+
+ - Gradle 8+
+ - Make (for simplified execution)
