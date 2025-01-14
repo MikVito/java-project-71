@@ -19,3 +19,6 @@ The output can be customized into one of three available formats:
 
 The application allows users to easily compare configuration files, detect changes, and choose the most suitable format 
 for displaying the differences.
+
+ - View help information for program arguments and options
+   https://asciinema.org/a/698202
