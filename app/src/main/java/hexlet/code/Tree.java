@@ -34,15 +34,13 @@ public class Tree {
             } else if (!existsInFile1 && existsInFile2) {
                 changeEntry.put("status", "added");
                 changeEntry.put("value", value2);
-            } else if (existsInFile1) {
-                if (value1 == null || value2 == null || !isEqual(value1, value2)) {
-                    changeEntry.put("status", "changed");
-                    changeEntry.put("value1", value1);
-                    changeEntry.put("value2", value2);
-                } else {
-                    changeEntry.put("status", "unchanged");
-                    changeEntry.put("value", value1);
-                }
+            } else if (!isEqual(value1, value2)) {
+                changeEntry.put("status", "changed");
+                changeEntry.put("value1", value1);
+                changeEntry.put("value2", value2);
+            } else {
+                changeEntry.put("status", "unchanged");
+                changeEntry.put("value", value1);
             }
 
             result.add(changeEntry);
