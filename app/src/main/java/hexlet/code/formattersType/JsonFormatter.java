@@ -19,12 +19,12 @@ public class JsonFormatter {
             String status = (String) item.get("status");
 
             Map<String, Object> values = new TreeMap<>();
+
             if (status.equals("removed")) {
                 values.put("status", "deleted");
             } else {
                 values.put("status", status);
             }
-
             values.put("value1", null);
             values.put("value2", null);
 
