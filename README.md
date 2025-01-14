@@ -21,4 +21,5 @@ The application allows users to easily compare configuration files, detect chang
 for displaying the differences.
 
  - View help information for program arguments and options
-   https://asciinema.org/a/698202
+
+   [![asciicast](https://asciinema.org/a/698202.svg)](https://asciinema.org/a/698202) 
