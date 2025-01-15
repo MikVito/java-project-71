@@ -7,6 +7,7 @@
   - default: null
   + default: [value1, value2]
   - id: 45
+  + id: null
   - key1: value1
   + key2: value2
     numbers1: [1, 2, 3, 4]

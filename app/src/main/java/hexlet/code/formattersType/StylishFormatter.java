@@ -21,10 +21,9 @@ public class StylishFormatter {
                     break;
 
                 case "changed":
+                    // Гарантируем, что оба значения выводятся
                     resultStylish.append(formatLine("- ", key, oldValue));
-                    if (newValue != null) {
-                        resultStylish.append(formatLine("+ ", key, newValue));
-                    }
+                    resultStylish.append(formatLine("+ ", key, newValue));
                     break;
 
                 case "removed":
@@ -32,9 +31,7 @@ public class StylishFormatter {
                     break;
 
                 case "added":
-                    if (value != null) {
-                        resultStylish.append(formatLine("+ ", key, value));
-                    }
+                    resultStylish.append(formatLine("+ ", key, value));
                     break;
 
                 default:
