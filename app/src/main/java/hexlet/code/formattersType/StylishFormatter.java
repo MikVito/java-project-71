@@ -38,9 +38,7 @@ public class StylishFormatter {
                     break;
 
                 case "added":
-                    if (value != null) {
-                        resultStylish.append(formatLine("+ ", key, value));
-                    }
+                    resultStylish.append(formatLine("+ ", key, value));
                     break;
 
                 default:
