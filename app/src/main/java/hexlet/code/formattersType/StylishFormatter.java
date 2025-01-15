@@ -17,42 +17,29 @@ public class StylishFormatter {
 
             switch (status) {
                 case "unchanged":
-                    if (value != null) {
-                        resultStylish.append(formatLine("  ", key, value));
-                    }
+                    resultStylish.append(formatLine("  ", key, value));
                     break;
 
                 case "changed":
-                    if (oldValue != null) {
-                        resultStylish.append(formatLine("- ", key, oldValue));
-                    }
-                    if (newValue != null) {
-                        resultStylish.append(formatLine("+ ", key, newValue));
-                    }
+                    resultStylish.append(formatLine("- ", key, oldValue));
+                    resultStylish.append(formatLine("+ ", key, newValue));
                     break;
 
                 case "removed":
-                    if (value != null) {
-                        resultStylish.append(formatLine("- ", key, value));
-                    }
+                    resultStylish.append(formatLine("- ", key, value));
                     break;
 
                 case "added":
-                    if (value != null) {
-                        resultStylish.append(formatLine("+ ", key, value));
-                    }
+                    resultStylish.append(formatLine("+ ", key, value));
                     break;
 
                 default:
                     throw new IllegalArgumentException("Unknown status: " + status);
             }
         }
+
         resultStylish.append("}");
         return resultStylish.toString();
-    }
-
-    private static String stringify(Object value) {
-        return value == null ? "null" : value.toString();
     }
 
     public static String formatLine(String sign, String key, Object value) {
@@ -60,7 +47,7 @@ public class StylishFormatter {
                 + sign
                 + key
                 + ": "
-                + stringify(value)
+                + value
                 + "\n";
     }
 }
