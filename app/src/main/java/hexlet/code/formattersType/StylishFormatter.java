@@ -21,7 +21,6 @@ public class StylishFormatter {
                     break;
 
                 case "changed":
-                    // Гарантируем, что оба значения выводятся
                     resultStylish.append(formatLine("- ", key, oldValue));
                     resultStylish.append(formatLine("+ ", key, newValue));
                     break;
@@ -48,7 +47,7 @@ public class StylishFormatter {
                 + sign
                 + key
                 + ": "
-                + (value == null ? "null" : value)
+                + value
                 + "\n";
     }
 }
