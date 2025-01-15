@@ -12,7 +12,7 @@ public class StylishFormatter {
             var value = diffEntry.get("value");
             var oldValue = diffEntry.get("value1");
             var newValue = diffEntry.get("value2");
-            var status = String.valueOf(diffEntry.get("status"));
+            var status = (String) diffEntry.get("status");
 
 
             switch (status) {
@@ -51,12 +51,16 @@ public class StylishFormatter {
         return resultStylish.toString();
     }
 
+    private static String stringify(Object value) {
+        return value == null ? "null" : value.toString();
+    }
+
     public static String formatLine(String sign, String key, Object value) {
         return "  "
                 + sign
                 + key
                 + ": "
-                + value
+                + stringify(value)
                 + "\n";
     }
 }
