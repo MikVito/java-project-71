@@ -14,18 +14,16 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - uses: gradle/gradle-build-action@v2
+      - uses: gradle/actions/wrapper-validation@v3
         with:
           gradle-version: 8.7
-          arguments: build
-          build-root-directory: app
-      # - run: ./gradlew checkstyleMain
-      # - run: ./gradlew test
+      - run: make checkstyleMain
+      - run: make test
       - name: Publish code coverage
-        uses: paambaati/codeclimate-action@v2.7.1
+        uses: paambaati/codeclimate-action@v8.0.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-          JACOCO_SOURCE_PATH: app/src/main/java
+          JACOCO_SOURCE_PATH: ${{github.workspace}}/app/src/main/java
         with:
           coverageCommand: make report
           coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
