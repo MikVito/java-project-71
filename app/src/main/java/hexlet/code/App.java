@@ -44,7 +44,7 @@ public class App implements Callable<Integer> {
             System.out.println(generate);
             return 0;
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            System.out.println("File read error: " + e);
             return 1;
         }
     }
