@@ -38,7 +38,9 @@ public class StylishFormatter {
                     break;
 
                 case "added":
-                    resultStylish.append(formatLine("+ ", key, value));
+                    if (value != null) {
+                        resultStylish.append(formatLine("+ ", key, value));
+                    }
                     break;
 
                 default:
@@ -50,7 +52,16 @@ public class StylishFormatter {
     }
 
     private static String stringify(Object value) {
-        return value == null ? "null" : value.toString();
+        if (value == null) {
+            return "null";
+        }
+        if (value instanceof String) {
+            return value.toString();
+        }
+        if (value instanceof List || value instanceof Map) {
+            return value.toString().replace("=", ": ").replace(",", ", ");
+        }
+        return value.toString();
     }
 
     public static String formatLine(String sign, String key, Object value) {
