@@ -14,15 +14,14 @@ It detects the differences between files and generates an output highlighting th
 
 ### 📝 Features
 
-✔️ Supports JSON, YAML, and YML file formats
-✔️ Detects changes between files and presents them in a structured format
-✔️ Three output formats available:
-
+**✔️ Supports JSON, YAML, and YML file formats**
+**✔️ Detects changes between files and presents them in a structured format**
+**✔️ Three output formats available:**
  - 📌 Stylish (default) – structured tree format
  - 📌 Plain – simple text format
  - 📌 JSON – formatted JSON output
 
-🔧 Example Commands
+### 🔧 Example Commands
 
 Compare two JSON files using stylish format:
 ```sh
