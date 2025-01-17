@@ -1,64 +1,56 @@
 package hexlet.code.formattersType;
 
-import java.util.List;
 import java.util.Map;
 
-public class PlainFormatter {
-    public static String formatPlain(List<Map<String, Object>> inputList) {
-        StringBuilder resultString = new StringBuilder();
 
-        for (Map<String, Object> diffEntry : inputList) {
-            var key = String.valueOf(diffEntry.get("key"));
-            var value = diffEntry.get("value");
-            var oldValue = diffEntry.get("value1");
-            var newValue = diffEntry.get("value2");
-            var status = String.valueOf(diffEntry.get("status"));
+public class PlainFormatter {
+    public static String formatPlain(Map<String, Map<String, Object>> inputMap) {
+        StringBuilder result = new StringBuilder();
+
+        for (var entry : inputMap.entrySet()) {
+            String key = entry.getKey();
+            Map<String, Object> diffEntry = entry.getValue();
+            String status = diffEntry.get("status").toString();
 
             switch (status) {
-                case "unchanged":
+                case "changed" -> result.append("Property '")
+                        .append(key)
+                        .append("' was updated. From ")
+                        .append(stringify(diffEntry.get("value1")))
+                        .append(" to ")
+                        .append(stringify(diffEntry.get("value2")))
+                        .append("\n");
 
-                    break;
+                case "deleted" -> result.append("Property '")
+                        .append(key)
+                        .append("' was removed")
+                        .append("\n");
 
-                case "changed":
-                    resultString.append("Property '")
-                            .append(key)
-                            .append("' was updated. From ")
-                            .append(stringify(oldValue))
-                            .append(" to ")
-                            .append(stringify(newValue))
-                            .append("\n");
-                    break;
+                case "added" -> result.append("Property '")
+                        .append(key)
+                        .append("' was added with value: ")
+                        .append(stringify(diffEntry.get("value2")))
+                        .append("\n");
 
-                case "removed":
-                    resultString.append("Property '")
-                            .append(key)
-                            .append("' was removed")
-                            .append("\n");
-                    break;
-
-                case "added":
-                    resultString.append("Property '")
-                            .append(key)
-                            .append("' was added with value: ")
-                            .append(stringify(value))
-                            .append("\n");
-                    break;
-
-                default:
-                    throw new IllegalArgumentException("Unknown status: " + status);
+                default -> {
+                }
             }
         }
-        return resultString.toString().trim();
+        return result.toString().trim();
     }
 
-    public static Object stringify(Object valueObj) {
-        if (valueObj == null || valueObj.equals("null")) {
+    private static String stringify(Object value) {
+        if (value == null) {
             return "null";
-        } else if (valueObj instanceof String) {
-            return "'" + valueObj + "'";
-        } else if (valueObj instanceof Map<?, ?> || valueObj instanceof List<?>) {
+        }
+        if (value instanceof String) {
+            return "'" + value + "'";
+        }
+
+        if (value instanceof Map<?, ?> || value instanceof Iterable<?>) {
             return "[complex value]";
         }
-        return valueObj.toString();
+
+        return value.toString();
     }
 }

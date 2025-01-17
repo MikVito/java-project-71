@@ -1,54 +1,48 @@
 package hexlet.code;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 
 public class Tree {
-    public static List<Map<String, Object>> getDifferenceTree(Map<String, Object> inputFile1,
-                                                              Map<String, Object> inputFile2) {
+    public static Map<String, Map<String, Object>> getDifferenceTree(Map<String, Object> inputFile1,
+                                                                     Map<String, Object> inputFile2) {
+        Set<String> keys = new TreeSet<>();
+        keys.addAll(inputFile1.keySet());
+        keys.addAll(inputFile2.keySet());
 
-        TreeMap<String, Object> sortedKeys = new TreeMap<>();
-        sortedKeys.putAll(inputFile1);
-        sortedKeys.putAll(inputFile2);
+        Map<String, Map<String, Object>> resultMap = new TreeMap<>();
 
-        List<Map<String, Object>> result = new ArrayList<>();
+        for (var key : keys) {
+            Map<String, Object> values = new TreeMap<>();
+            Object oldValue = inputFile1.get(key);
+            Object newValue = inputFile2.get(key);
 
-        sortedKeys.forEach((key, value) -> {
-
-            Map<String, Object> changeEntry = new HashMap<>();
-            changeEntry.put("key", key);
-
-            Object value1 = inputFile1.get(key);
-            Object value2 = inputFile2.get(key);
-
-            boolean existsInFile1 = inputFile1.containsKey(key);
-            boolean existsInFile2 = inputFile2.containsKey(key);
-
-            if (existsInFile1 && !existsInFile2) {
-                changeEntry.put("status", "removed");
-                changeEntry.put("value", value1);
-            } else if (!existsInFile1 && existsInFile2) {
-                changeEntry.put("status", "added");
-                changeEntry.put("value", value2);
-            } else if (!isEqual(value1, value2)) {
-                changeEntry.put("status", "changed");
-                changeEntry.put("value1", value1);
-                changeEntry.put("value2", value2);
+            if (!inputFile1.containsKey(key)) {
+                values.put("status", "added");
+                values.put("value1", null);
+                values.put("value2", newValue);
+            } else if (!inputFile2.containsKey(key)) {
+                values.put("status", "deleted");
+                values.put("value1", oldValue);
+                values.put("value2", null);
+            } else if (compareValues(oldValue, newValue)) {
+                values.put("status", "unchanged");
+                values.put("value1", oldValue);
+                values.put("value2", oldValue);
             } else {
-                changeEntry.put("status", "unchanged");
-                changeEntry.put("value", value1);
+                values.put("status", "changed");
+                values.put("value1", oldValue);
+                values.put("value2", newValue);
             }
-
-            result.add(changeEntry);
-        });
-        return result;
+            resultMap.put(key, values);
+        }
+        return resultMap;
     }
 
-    public static boolean isEqual(Object value1, Object value2) {
+    public static boolean compareValues(Object value1, Object value2) {
         if (value1 == null || value2 == null) {
             return value1 == value2;
         }

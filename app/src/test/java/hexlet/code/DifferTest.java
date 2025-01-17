@@ -44,8 +44,8 @@ public class DifferTest {
         filepathYaml2 = generatePath(path, "/testFile2.yml");
 
         expectedJson = fileReader(path, "/expectedJson.json");
-        expectedStylish = fileReader(path, "/expectedStylish.text");
-        expectedPlain = fileReader(path, "/expectedPlain.text");
+        expectedStylish = fileReader(path, "/expectedStylish.txt");
+        expectedPlain = fileReader(path, "/expectedPlain.txt");
     }
 
     @Test
@@ -96,5 +96,3 @@ public class DifferTest {
         JSONAssert.assertEquals(expectedJson, actual, false);
     }
 }
-
-
