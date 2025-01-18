@@ -3,10 +3,10 @@ package hexlet.code.formattersType;
 import java.util.Map;
 
 public class StylishFormatter {
-    public static String formatStylish(Map<String, Map<String, Object>> diff) {
+    public static String formatStylish(Map<String, Map<String, Object>> inputMap) {
         StringBuilder result = new StringBuilder("{\n");
 
-        for (var entry : diff.entrySet()) {
+        for (var entry : inputMap.entrySet()) {
             String key = entry.getKey();
             Map<String, Object> values = entry.getValue();
             String status = String.valueOf(values.get("status"));
@@ -51,7 +51,7 @@ public class StylishFormatter {
         return result.toString();
     }
 
-    private static String stringify(Object value) {
-        return value == null ? "null" : value.toString();
+    private static String stringify(Object objValue) {
+        return objValue == null ? "null" : objValue.toString();
     }
 }

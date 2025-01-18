@@ -62,6 +62,10 @@ Click on a recording to view the functionality in action.
 
 [![asciicast](https://asciinema.org/a/698280.svg)](https://asciinema.org/a/698280)
 
+**📌 Comparing Two JSON Files (Specifying Json Output)**
+
+[![asciicast](https://asciinema.org/a/698857.svg)](https://asciinema.org/a/698857)
+
 ### 📌 Requirements
  - Java 17+
  - Gradle 8+

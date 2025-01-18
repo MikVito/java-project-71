@@ -32,8 +32,11 @@ public class PlainFormatter {
                         .append(stringify(diffEntry.get("value2")))
                         .append("\n");
 
-                default -> {
+                case "unchanged" -> {
+
                 }
+
+                default -> throw new IllegalArgumentException("Unknown format" + status);
             }
         }
         return result.toString().trim();
