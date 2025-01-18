@@ -16,10 +16,10 @@ public class Differ {
         String file1 = fileReader(filepath1);
         String file2 = fileReader(filepath2);
         String fileFormat1 = getFileFormat(filepath1);
-
+        String fileFormat2 = getFileFormat(filepath2);
 
         Map<String, Object> parsedData1 = Parser.parse(file1, fileFormat1);
-        Map<String, Object> parsedData2 = Parser.parse(file2, fileFormat1);
+        Map<String, Object> parsedData2 = Parser.parse(file2, fileFormat2);
 
         var compareFileList = Tree.getDifferenceTree(parsedData1, parsedData2);
         return Formatter.formatDifference(compareFileList, format);
